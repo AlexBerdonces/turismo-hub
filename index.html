@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turismo Hub</title>
+<style>
+:root {
+  --bg: #080f1e;
+  --surface: #0f1d35;
+  --surface2: #162540;
+  --accent: #00b4d8;
+  --accent2: #0096c7;
+  --green: #06d6a0;
+  --orange: #ff9f1c;
+  --red: #ef476f;
+  --blue: #48cae4;
+  --purple: #7b2d8b;
+  --teal: #80cbc4;
+  --coral: #f4845f;
+  --sand: #e9c46a;
+  --text: #e4eef8;
+  --text2: #8aa4c2;
+  --border: #1e3352;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px 12px;
+}
+.header-top {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.header-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header-sub {
+  font-size: 0.85rem;
+  color: var(--text2);
+}
+.cat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.cat-chip {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--surface2);
+  color: var(--text2);
+  border: 1px solid var(--border);
+}
+
+/* CONTROLS */
+.controls {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.search-box {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-box:focus {
+  border-color: var(--accent);
+}
+.search-box::placeholder { color: var(--text2); }
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.btn-row label {
+  font-size: 0.78rem;
+  color: var(--text2);
+  margin-right: 2px;
+}
+.filter-btn {
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text2);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.15s;
+}
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+.filter-btn.active-sort {
+  background: var(--accent2);
+  border-color: var(--accent2);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* GRID */
+.grid-container {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* CARDS */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(0,180,216,0.15);
+}
+.card-top-border {
+  height: 3px;
+  width: 100%;
+}
+.card-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.card-badges {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.badge {
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge-cat {
+  background: rgba(0,180,216,0.15);
+  color: var(--accent);
+  border: 1px solid rgba(0,180,216,0.3);
+}
+.badge-score-green { background: rgba(6,214,160,0.15); color: var(--green); border: 1px solid rgba(6,214,160,0.3); }
+.badge-score-orange { background: rgba(255,159,28,0.15); color: var(--orange); border: 1px solid rgba(255,159,28,0.3); }
+.badge-score-red { background: rgba(239,71,111,0.15); color: var(--red); border: 1px solid rgba(239,71,111,0.3); }
+
+.card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+.card-summary {
+  font-size: 0.82rem;
+  color: var(--text2);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.summary-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.summary-row .card-summary {
+  flex: 1;
+}
+.expand-btn {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  transition: background 0.15s, color 0.15s;
+}
+.expand-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+#news-tooltip {
+  display: none;
+  position: fixed;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 13px;
+  width: 300px;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.45);
+  z-index: 9999;
+  white-space: normal;
+  pointer-events: none;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text2);
+}
+.card-footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+.card-footer a:hover { text-decoration: underline; }
+
+/* EMPTY STATE */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text2);
+  font-size: 1rem;
+}
+.empty-state-big {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text2);
+}
+.empty-state-big h2 {
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.empty-state-big p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .grid-container { padding: 12px; gap: 12px; }
+  .controls { padding: 8px 12px; }
+  .header-title { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="header-top">
+    <span class="header-title">✈️ Turismo Hub</span>
+    <span class="header-sub" id="header-sub"></span>
+  </div>
+  <div class="cat-chips" id="cat-chips"></div>
+</header>
+
+<div class="controls" id="controls">
+  <input class="search-box" id="search-input" type="text" placeholder="🔍 Buscar en título, resumen, categoría..." oninput="applyFilters()">
+
+  <div class="btn-row" id="sort-row">
+    <label>Ordenar:</label>
+    <button class="filter-btn active-sort" onclick="setSort('puntuacion')">🏆 Puntuación</button>
+    <button class="filter-btn" onclick="setSort('fecha')">📅 Más reciente</button>
+  </div>
+
+  <div class="btn-row" id="cat-row">
+    <label>Categoría:</label>
+    <button class="filter-btn active" onclick="setCatFilter('all')">✨ Todas</button>
+    <button class="filter-btn" onclick="setCatFilter('Aerolineas')">✈️ Aerolíneas</button>
+    <button class="filter-btn" onclick="setCatFilter('Hoteles')">🏨 Hoteles</button>
+    <button class="filter-btn" onclick="setCatFilter('TechTurismo')">💻 Tech Turismo</button>
+    <button class="filter-btn" onclick="setCatFilter('Destinos')">🌍 Destinos</button>
+    <button class="filter-btn" onclick="setCatFilter('Sostenibilidad')">♻️ Sostenibilidad</button>
+    <button class="filter-btn" onclick="setCatFilter('Regulacion')">⚖️ Regulación</button>
+    <button class="filter-btn" onclick="setCatFilter('Negocios')">💼 Negocios</button>
+    <button class="filter-btn" onclick="setCatFilter('Experiencia')">🎭 Experiencia</button>
+  </div>
+
+  <div class="btn-row" id="score-row">
+    <label>Relevancia:</label>
+    <button class="filter-btn active" onclick="setScoreFilter('all')">⭐ Todas</button>
+    <button class="filter-btn" onclick="setScoreFilter('alto')">🟢 Alta</button>
+    <button class="filter-btn" onclick="setScoreFilter('medio')">🟠 Media</button>
+    <button class="filter-btn" onclick="setScoreFilter('bajo')">🔴 Baja</button>
+  </div>
+
+  <div class="btn-row" id="newsletter-row">
+    <label>Newsletter:</label>
+    <!-- populated dynamically by JS -->
+  </div>
+</div>
+
+<div class="grid-container" id="grid"></div>
+
+<script>
+const RAW_DATA = {"version": "1.0", "ultima_actualizacion": "2026-06-19", "total_noticias": 7, "noticias": [{"id": "tur_001", "tipo": "noticia", "titulo": "Norwegian compra NLTG: 160 aviones y 30 millones de clientes en grupo nórdico", "resumen": "Norwegian Airlines adquiere Nordic Leisure Travel Group (Ving, Spies, Tjäreborg, Globetrotter y Sunclass Airlines) por ~$843M, creando el mayor grupo de viajes del norte de Europa con 160 aeronaves y 30 millones de clientes. Es la mayor integración vertical en el turismo europeo en años.", "categoria": "Negocios y M&A", "puntuacion": 82, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": "https://www.nltg.com/", "newsletter": "Future Travel"}, {"id": "tur_002", "tipo": "noticia", "titulo": "American Airlines: Robert Isom bajo presión y lista de sucesores circula en IATA", "resumen": "Fuentes del IATA General Meeting en Río apuntan a que Robert Isom podría no sobrevivir el año como CEO de American Airlines tras no mejorar la rentabilidad. El ex-CEO Doug Parker y otros candidatos internos están siendo evaluados. Las últimas apuestas de Isom —Starlink, champagne Bollinger, café Lavazza— se leen como intentos de última hora para salvar su puesto.", "categoria": "Aerolíneas y Aviación", "puntuacion": 74, "fecha": "2026-06-19", "fuente_asunto": "Who Will Succeed Robert Isom and When?", "url": "https://www.theairlineobserver.com/p/who-will-succeed-robert-isom-and", "newsletter": "The Airline Observer"}, {"id": "tur_003", "tipo": "noticia", "titulo": "Navan compra TMC brasileña Smartrips en su primera adquisición post-OPI", "resumen": "Navan, plataforma de viajes de empresa recién salida a bolsa, adquiere Smartrips, una agencia de viajes corporativa de Brasil. El país concentra el 40% del gasto en viajes de negocio de Latinoamérica. Los clientes de Navan que operan allí podrán gestionar todo desde la plataforma.", "categoria": "Negocios y M&A", "puntuacion": 65, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": "https://navan.com/", "newsletter": "Future Travel"}, {"id": "tur_004", "tipo": "noticia", "titulo": "WD Trip recauda $14,7M para agentes de IA dirigidos a hoteles y aerolíneas", "resumen": "WD Trip, fundada por un ex-VP de Alibaba y ejecutivo de Fliggy, cierra una ronda Pre-A de $14,7M respaldada por Baidu y accionistas de DeepSeek. Desarrolla herramientas de agentes de IA para hoteles, proveedores y marcas de viajes, además de planificación de viajes para el consumidor.", "categoria": "Tecnología en Turismo", "puntuacion": 63, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": null, "newsletter": "Future Travel"}, {"id": "tur_005", "tipo": "noticia", "titulo": "Besty AI cierra $3,75M para gestionar alquileres vacacionales de forma autónoma", "resumen": "Besty AI recauda $3,75M en seed round para su motor agéntico que automatiza mensajes, operaciones, precios y ventas adicionales en alquileres de corta estancia. La plataforma cubre desde huéspedes hasta ingresos sin intervención humana, apuntando a propiedades gestionadas casi 100% de forma autónoma.", "categoria": "Tecnología en Turismo", "puntuacion": 60, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": "https://www.getbesty.ai/", "newsletter": "Future Travel"}, {"id": "tur_006", "tipo": "noticia", "titulo": "Journey levanta $15M para red de fidelización de hoteles independientes", "resumen": "Journey cierra una ronda de $15M liderada por FirstMark Capital y Headline para expandir su red de fidelización diseñada para hoteles independientes. Acaba de adquirir también la plataforma de experiencias Epicurate, ampliando su oferta más allá del alojamiento.", "categoria": "Hoteles y Alojamiento", "puntuacion": 58, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": "https://www.journey.com/", "newsletter": "Future Travel"}, {"id": "tur_007", "tipo": "noticia", "titulo": "EXO Travel, DMC líder en Asia, se integra en el grupo JTB", "resumen": "EXO Travel, una de las principales agencias de viajes receptivas de Asia, ha sido adquirida por la división Asia Pacífico de JTB Corp. El equipo directivo y las operaciones se mantienen sin cambios. La integración refuerza la presencia de JTB en el mercado del turismo de entrada en Asia.", "categoria": "Negocios y M&A", "puntuacion": 50, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": "https://www.exotravel.com/", "newsletter": "Future Travel"}]};
+
+const CAT_BORDER = {
+  'Aerolineas':      '#00b4d8',
+  'Hoteles':         '#06d6a0',
+  'TechTurismo':     '#7b2d8b',
+  'Destinos':        '#e9c46a',
+  'Sostenibilidad':  '#2d6a4f',
+  'Regulacion':      '#ef476f',
+  'Negocios':        '#ff9f1c',
+  'Experiencia':     '#f4845f',
+};
+
+const CAT_LABEL = {
+  'Aerolineas':      '✈️ Aerolíneas',
+  'Hoteles':         '🏨 Hoteles',
+  'TechTurismo':     '💻 Tech Turismo',
+  'Destinos':        '🌍 Destinos',
+  'Sostenibilidad':  '♻️ Sostenibilidad',
+  'Regulacion':      '⚖️ Regulación',
+  'Negocios':        '💼 Negocios',
+  'Experiencia':     '🎭 Experiencia',
+};
+
+const CAT_MAP = {
+  'Aerolíneas y Aviación':   'Aerolineas',
+  'Aerolineas':              'Aerolineas',
+  'Hoteles y Alojamiento':   'Hoteles',
+  'Hoteles':                 'Hoteles',
+  'Tecnología en Turismo':   'TechTurismo',
+  'TechTurismo':             'TechTurismo',
+  'Destinos y Tendencias':   'Destinos',
+  'Destinos':                'Destinos',
+  'Sostenibilidad':          'Sostenibilidad',
+  'Regulación y Política':   'Regulacion',
+  'Regulacion':              'Regulacion',
+  'Negocios y M&A':          'Negocios',
+  'Negocios':                'Negocios',
+  'Experiencia del Viajero': 'Experiencia',
+  'Experiencia':             'Experiencia',
+};
+
+const NL_ICONS = {
+  'Future Travel':        '🌐',
+  'The Airline Observer': '🛫',
+};
+
+const noticias = RAW_DATA.noticias;
+
+let activeCat = 'all';
+let activeSort = 'puntuacion';
+let activeScore = 'all';
+let activeNewsletter = 'all';
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function formatDate(d) {
+  if (!d) return '';
+  const parts = d.split('-');
+  if (parts.length === 3) {
+    return parts[2] + '/' + parts[1] + '/' + parts[0];
+  }
+  return d;
+}
+
+function getCatKey(item) {
+  const c = item.categoria || '';
+  return CAT_MAP[c] || 'Aerolineas';
+}
+
+function getScoreBadgeClass(score) {
+  if (score > 70) return 'badge-score-green';
+  if (score >= 40) return 'badge-score-orange';
+  return 'badge-score-red';
+}
+
+function buildCard(item) {
+  const catKey = getCatKey(item);
+  const borderColor = CAT_BORDER[catKey] || '#00b4d8';
+  const scoreClass = getScoreBadgeClass(item.puntuacion || 0);
+  const catLabel = CAT_LABEL[catKey] || catKey;
+  const newsletter = item.newsletter || 'Future Travel';
+  const url = item.url || '';
+
+  return `<div class="card">
+    <div class="card-top-border" style="background:${borderColor}"></div>
+    <div class="card-body">
+      <div class="card-badges">
+        <span class="badge badge-cat">${escapeHtml(catLabel)}</span>
+        <span class="badge ${scoreClass}">⭐ ${item.puntuacion || 0}</span>
+      </div>
+      <div class="card-title">${escapeHtml(item.titulo)}</div>
+      <div class="summary-row">
+        <div class="card-summary">${escapeHtml(item.resumen)}</div>
+        <div class="expand-btn" data-resumen="${escapeHtml(item.resumen)}">+</div>
+      </div>
+      <div class="card-footer">
+        <span>📅 ${formatDate(item.fecha)}</span>
+        <span>${escapeHtml(NL_ICONS[newsletter] || '📨')} ${escapeHtml(newsletter)}</span>
+        ${url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">→ Ver artículo</a>` : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function setCatFilter(cat) {
+  activeCat = cat;
+  document.querySelectorAll('#cat-row .filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  applyFilters();
+}
+
+function setScoreFilter(score) {
+  activeScore = score;
+  document.querySelectorAll('#score-row .filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  applyFilters();
+}
+
+function setSort(sort) {
+  activeSort = sort;
+  document.querySelectorAll('#sort-row .filter-btn').forEach(b => b.classList.remove('active-sort'));
+  event.target.classList.add('active-sort');
+  applyFilters();
+}
+
+function setNewsletterFilter(nl) {
+  activeNewsletter = nl;
+  document.querySelectorAll('#newsletter-row .filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const query = document.getElementById('search-input').value.toLowerCase().trim();
+
+  let items = noticias.filter(item => {
+    // Category filter
+    if (activeCat !== 'all') {
+      const catKey = getCatKey(item);
+      if (catKey !== activeCat) return false;
+    }
+
+    // Newsletter filter
+    if (activeNewsletter !== 'all') {
+      const itemNewsletter = item.newsletter || 'Future Travel';
+      if (itemNewsletter !== activeNewsletter) return false;
+    }
+
+    // Score filter
+    if (activeScore !== 'all') {
+      const s = item.puntuacion || 0;
+      if (activeScore === 'alto' && s <= 70) return false;
+      if (activeScore === 'medio' && (s < 40 || s > 70)) return false;
+      if (activeScore === 'bajo' && s >= 40) return false;
+    }
+
+    // Search filter
+    if (query) {
+      const searchable = [
+        item.titulo || '',
+        item.resumen || '',
+        item.categoria || '',
+        item.newsletter || '',
+      ].join(' ').toLowerCase();
+      if (!searchable.includes(query)) return false;
+    }
+
+    return true;
+  });
+
+  // Sort
+  items.sort((a, b) => {
+    if (activeSort === 'puntuacion') return (b.puntuacion || 0) - (a.puntuacion || 0);
+    if (activeSort === 'fecha') return (b.fecha || '').localeCompare(a.fecha || '');
+    return (b.puntuacion || 0) - (a.puntuacion || 0);
+  });
+
+  const grid = document.getElementById('grid');
+
+  if (noticias.length === 0) {
+    grid.innerHTML = `<div class="empty-state-big">
+      <h2>✈️ Turismo Hub está listo</h2>
+      <p>Aún no hay noticias procesadas. Di <strong>"Actualiza turismo"</strong> para que empiece a parsear las newsletters de <strong>Future Travel</strong> y <strong>The Airline Observer</strong>.</p>
+    </div>`;
+    return;
+  }
+
+  if (items.length === 0) {
+    grid.innerHTML = '<div class="empty-state">😕 No se encontraron resultados para tu búsqueda</div>';
+    return;
+  }
+
+  grid.innerHTML = items.map(item => buildCard(item)).join('');
+}
+
+(function initPage() {
+  const lastUpdate = RAW_DATA.ultima_actualizacion || '';
+  const total = noticias.length;
+
+  document.getElementById('header-sub').textContent =
+    total > 0
+      ? `${total} noticias · última actualización: ${lastUpdate}`
+      : `Sin noticias aún · última actualización: ${lastUpdate}`;
+
+  // Category chips
+  const cats = {};
+  noticias.forEach(n => {
+    const k = getCatKey(n);
+    cats[k] = (cats[k] || 0) + 1;
+  });
+  const chipsEl = document.getElementById('cat-chips');
+  const entries = Object.entries(cats).sort((a,b) => b[1]-a[1]);
+  chipsEl.innerHTML = entries.map(([k,v]) => {
+    const label = CAT_LABEL[k] || k;
+    return `<span class="cat-chip" style="border-color:${CAT_BORDER[k]||'#00b4d8'};color:${CAT_BORDER[k]||'#00b4d8'};background:rgba(0,0,0,0.2)">${label} ${v}</span>`;
+  }).join('');
+
+  // Newsletter filter (auto-generated from data)
+  const newsletters = [...new Set(noticias.map(n => n.newsletter || 'Future Travel'))].sort();
+  const nlRow = document.getElementById('newsletter-row');
+  const nlBtns = [`<button class="filter-btn active" onclick="setNewsletterFilter('all')">✨ Todas</button>`];
+  newsletters.forEach(nl => {
+    const icon = NL_ICONS[nl] || '📨';
+    nlBtns.push(`<button class="filter-btn" onclick="setNewsletterFilter('${nl.replace(/'/g, "\\'")}')">${icon} ${nl}</button>`);
+  });
+  nlRow.innerHTML = '<label>Newsletter:</label>' + nlBtns.join('');
+})();
+
+applyFilters();
+</script>
+<div id="news-tooltip"></div>
+<script>
+(function() {
+  var tip = document.getElementById('news-tooltip');
+  document.addEventListener('mouseover', function(e) {
+    var btn = e.target.closest('.expand-btn');
+    if (btn) {
+      tip.textContent = btn.getAttribute('data-resumen') || '';
+      tip.style.display = 'block';
+    }
+  });
+  document.addEventListener('mouseout', function(e) {
+    var btn = e.target.closest('.expand-btn');
+    if (btn) {
+      tip.style.display = 'none';
+    }
+  });
+  document.addEventListener('mousemove', function(e) {
+    if (tip.style.display === 'block') {
+      var x = e.clientX + 14;
+      var y = e.clientY - 10;
+      if (x + 310 > window.innerWidth) x = e.clientX - 320;
+      if (y + 120 > window.innerHeight) y = e.clientY - 130;
+      tip.style.left = x + 'px';
+      tip.style.top = y + 'px';
+    }
+  });
+})();
+</script>
+</body>
+</html>
