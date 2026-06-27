@@ -362,7 +362,169 @@ body {
 <div class="grid-container" id="grid"></div>
 
 <script>
-const RAW_DATA = {"version": "1.0", "ultima_actualizacion": "2026-06-19", "total_noticias": 7, "noticias": [{"id": "tur_001", "tipo": "noticia", "titulo": "Norwegian compra NLTG: 160 aviones y 30 millones de clientes en grupo nórdico", "resumen": "Norwegian Airlines adquiere Nordic Leisure Travel Group (Ving, Spies, Tjäreborg, Globetrotter y Sunclass Airlines) por ~$843M, creando el mayor grupo de viajes del norte de Europa con 160 aeronaves y 30 millones de clientes. Es la mayor integración vertical en el turismo europeo en años.", "categoria": "Negocios y M&A", "puntuacion": 82, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": "https://www.nltg.com/", "newsletter": "Future Travel"}, {"id": "tur_002", "tipo": "noticia", "titulo": "American Airlines: Robert Isom bajo presión y lista de sucesores circula en IATA", "resumen": "Fuentes del IATA General Meeting en Río apuntan a que Robert Isom podría no sobrevivir el año como CEO de American Airlines tras no mejorar la rentabilidad. El ex-CEO Doug Parker y otros candidatos internos están siendo evaluados. Las últimas apuestas de Isom —Starlink, champagne Bollinger, café Lavazza— se leen como intentos de última hora para salvar su puesto.", "categoria": "Aerolíneas y Aviación", "puntuacion": 74, "fecha": "2026-06-19", "fuente_asunto": "Who Will Succeed Robert Isom and When?", "url": "https://www.theairlineobserver.com/p/who-will-succeed-robert-isom-and", "newsletter": "The Airline Observer"}, {"id": "tur_003", "tipo": "noticia", "titulo": "Navan compra TMC brasileña Smartrips en su primera adquisición post-OPI", "resumen": "Navan, plataforma de viajes de empresa recién salida a bolsa, adquiere Smartrips, una agencia de viajes corporativa de Brasil. El país concentra el 40% del gasto en viajes de negocio de Latinoamérica. Los clientes de Navan que operan allí podrán gestionar todo desde la plataforma.", "categoria": "Negocios y M&A", "puntuacion": 65, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": "https://navan.com/", "newsletter": "Future Travel"}, {"id": "tur_004", "tipo": "noticia", "titulo": "WD Trip recauda $14,7M para agentes de IA dirigidos a hoteles y aerolíneas", "resumen": "WD Trip, fundada por un ex-VP de Alibaba y ejecutivo de Fliggy, cierra una ronda Pre-A de $14,7M respaldada por Baidu y accionistas de DeepSeek. Desarrolla herramientas de agentes de IA para hoteles, proveedores y marcas de viajes, además de planificación de viajes para el consumidor.", "categoria": "Tecnología en Turismo", "puntuacion": 63, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": null, "newsletter": "Future Travel"}, {"id": "tur_005", "tipo": "noticia", "titulo": "Besty AI cierra $3,75M para gestionar alquileres vacacionales de forma autónoma", "resumen": "Besty AI recauda $3,75M en seed round para su motor agéntico que automatiza mensajes, operaciones, precios y ventas adicionales en alquileres de corta estancia. La plataforma cubre desde huéspedes hasta ingresos sin intervención humana, apuntando a propiedades gestionadas casi 100% de forma autónoma.", "categoria": "Tecnología en Turismo", "puntuacion": 60, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": "https://www.getbesty.ai/", "newsletter": "Future Travel"}, {"id": "tur_006", "tipo": "noticia", "titulo": "Journey levanta $15M para red de fidelización de hoteles independientes", "resumen": "Journey cierra una ronda de $15M liderada por FirstMark Capital y Headline para expandir su red de fidelización diseñada para hoteles independientes. Acaba de adquirir también la plataforma de experiencias Epicurate, ampliando su oferta más allá del alojamiento.", "categoria": "Hoteles y Alojamiento", "puntuacion": 58, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": "https://www.journey.com/", "newsletter": "Future Travel"}, {"id": "tur_007", "tipo": "noticia", "titulo": "EXO Travel, DMC líder en Asia, se integra en el grupo JTB", "resumen": "EXO Travel, una de las principales agencias de viajes receptivas de Asia, ha sido adquirida por la división Asia Pacífico de JTB Corp. El equipo directivo y las operaciones se mantienen sin cambios. La integración refuerza la presencia de JTB en el mercado del turismo de entrada en Asia.", "categoria": "Negocios y M&A", "puntuacion": 50, "fecha": "2026-06-19", "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M", "url": "https://www.exotravel.com/", "newsletter": "Future Travel"}]};
+const RAW_DATA = {
+  "version": "1.0",
+  "ultima_actualizacion": "2026-06-27",
+  "total_noticias": 13,
+  "noticias": [
+    {
+      "id": "tur_001",
+      "tipo": "noticia",
+      "titulo": "Norwegian compra NLTG: 160 aviones y 30 millones de clientes en grupo nórdico",
+      "resumen": "Norwegian Airlines adquiere Nordic Leisure Travel Group (Ving, Spies, Tjäreborg, Globetrotter y Sunclass Airlines) por ~$843M, creando el mayor grupo de viajes del norte de Europa con 160 aeronaves y 30 millones de clientes. Es la mayor integración vertical en el turismo europeo en años.",
+      "categoria": "Negocios y M&A",
+      "puntuacion": 82,
+      "fecha": "2026-06-19",
+      "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
+      "url": "https://www.nltg.com/",
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_002",
+      "tipo": "noticia",
+      "titulo": "American Airlines: Robert Isom bajo presión y lista de sucesores circula en IATA",
+      "resumen": "Fuentes del IATA General Meeting en Río apuntan a que Robert Isom podría no sobrevivir el año como CEO de American Airlines tras no mejorar la rentabilidad. El ex-CEO Doug Parker y otros candidatos internos están siendo evaluados. Las últimas apuestas de Isom —Starlink, champagne Bollinger, café Lavazza— se leen como intentos de última hora para salvar su puesto.",
+      "categoria": "Aerolíneas y Aviación",
+      "puntuacion": 79,
+      "fecha": "2026-06-19",
+      "fuente_asunto": "Who Will Succeed Robert Isom and When?",
+      "url": "https://www.theairlineobserver.com/p/who-will-succeed-robert-isom-and",
+      "newsletter": "The Airline Observer"
+    },
+    {
+      "id": "tur_003",
+      "tipo": "noticia",
+      "titulo": "Navan compra TMC brasileña Smartrips en su primera adquisición post-OPI",
+      "resumen": "Navan, plataforma de viajes de empresa recién salida a bolsa, adquiere Smartrips, una agencia de viajes corporativa de Brasil. El país concentra el 40% del gasto en viajes de negocio de Latinoamérica. Los clientes de Navan que operan allí podrán gestionar todo desde la plataforma.",
+      "categoria": "Negocios y M&A",
+      "puntuacion": 65,
+      "fecha": "2026-06-19",
+      "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
+      "url": "https://navan.com/",
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_004",
+      "tipo": "noticia",
+      "titulo": "WD Trip recauda $14,7M para agentes de IA dirigidos a hoteles y aerolíneas",
+      "resumen": "WD Trip, fundada por un ex-VP de Alibaba y ejecutivo de Fliggy, cierra una ronda Pre-A de $14,7M respaldada por Baidu y accionistas de DeepSeek. Desarrolla herramientas de agentes de IA para hoteles, proveedores y marcas de viajes, además de planificación de viajes para el consumidor.",
+      "categoria": "Tecnología en Turismo",
+      "puntuacion": 68,
+      "fecha": "2026-06-19",
+      "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
+      "url": null,
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_005",
+      "tipo": "noticia",
+      "titulo": "Besty AI cierra $3,75M para gestionar alquileres vacacionales de forma autónoma",
+      "resumen": "Besty AI recauda $3,75M en seed round para su motor agéntico que automatiza mensajes, operaciones, precios y ventas adicionales en alquileres de corta estancia. La plataforma cubre desde huéspedes hasta ingresos sin intervención humana, apuntando a propiedades gestionadas casi 100% de forma autónoma.",
+      "categoria": "Tecnología en Turismo",
+      "puntuacion": 65,
+      "fecha": "2026-06-19",
+      "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
+      "url": "https://www.getbesty.ai/",
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_006",
+      "tipo": "noticia",
+      "titulo": "Journey levanta $15M para red de fidelización de hoteles independientes",
+      "resumen": "Journey cierra una ronda de $15M liderada por FirstMark Capital y Headline para expandir su red de fidelización diseñada para hoteles independientes. Acaba de adquirir también la plataforma de experiencias Epicurate, ampliando su oferta más allá del alojamiento.",
+      "categoria": "Hoteles y Alojamiento",
+      "puntuacion": 58,
+      "fecha": "2026-06-19",
+      "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
+      "url": "https://www.journey.com/",
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_007",
+      "tipo": "noticia",
+      "titulo": "EXO Travel, DMC líder en Asia, se integra en el grupo JTB",
+      "resumen": "EXO Travel, una de las principales agencias de viajes receptivas de Asia, ha sido adquirida por la división Asia Pacífico de JTB Corp. El equipo directivo y las operaciones se mantienen sin cambios. La integración refuerza la presencia de JTB en el mercado del turismo de entrada en Asia.",
+      "categoria": "Negocios y M&A",
+      "puntuacion": 55,
+      "fecha": "2026-06-19",
+      "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
+      "url": "https://www.exotravel.com/",
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_008",
+      "tipo": "noticia",
+      "titulo": "RateHawk llega a $4.800M en reservas tras 10 años de crecimiento global",
+      "resumen": "Emerging Travel Group celebra el décimo aniversario de RateHawk, plataforma B2B para agencias de viaje que maneja ya $4.800M en reservas anuales y 110.000 clientes profesionales. El CEO Felix Shpilman reveló que el producto nació como experimento secundario y que la expansión global se hizo sin seguir ningún manual: entraban en mercados rápido y mantenían los que funcionaban.",
+      "categoria": "Negocios y M&A",
+      "puntuacion": 62,
+      "fecha": "2026-06-25",
+      "fuente_asunto": "Now at $4.8B in bookings. But it started as an accident.",
+      "url": "https://futuretravel.beehiiv.com/p/now-at-4-8b-in-bookings-but-it-started-as-an-accident",
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_009",
+      "tipo": "noticia",
+      "titulo": "Gen Z domina el turismo: reservan tarde, gastan en experiencias, no en hoteles",
+      "resumen": "MakeMyTrip, la mayor plataforma de viajes india, revela que 1 de cada 4 usuarios actuales es Gen Z y que el 50% de sus nuevos usuarios tienen entre 22 y 25 años. Este perfil reserva en la última semana, prefiere destinos off-beat y minimizan el gasto en alojamiento para invertirlo en la experiencia principal. Se fían de creadores de contenido, no de marcas.",
+      "categoria": "Destinos y Tendencias",
+      "puntuacion": 57,
+      "fecha": "2026-06-25",
+      "fuente_asunto": "Now at $4.8B in bookings. But it started as an accident.",
+      "url": "https://futuretravel.beehiiv.com/p/now-at-4-8b-in-bookings-but-it-started-as-an-accident",
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_010",
+      "tipo": "noticia",
+      "titulo": "IA en turismo: la confianza del viajero para reservar sigue siendo el freno",
+      "resumen": "Ejecutivos de Trip.com y Perk (gestión de viajes corporativos) explican que el viajero ya usa IA para planificar pero sigue prefiriendo marcas conocidas para confirmar la reserva. La clave es que la IA demuestre utilidad en pasos pequeños primero, y que siempre haya una persona disponible cuando las cosas se complican.",
+      "categoria": "Tecnología en Turismo",
+      "puntuacion": 50,
+      "fecha": "2026-06-25",
+      "fuente_asunto": "Now at $4.8B in bookings. But it started as an accident.",
+      "url": "https://futuretravel.beehiiv.com/p/now-at-4-8b-in-bookings-but-it-started-as-an-accident",
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_011",
+      "tipo": "noticia",
+      "titulo": "Chaty AI recauda $1,15M para recepcionista de voz IA en operadores de tours",
+      "resumen": "La startup australiana Chaty AI cierra una ronda de $1,15M para expandir su recepcionista de voz con IA dirigida a operadores de tours y experiencias. El producto responde llamadas, consulta disponibilidad en tiempo real y reserva directamente en sistemas como FareHarbor, Rezdy o Roller, las 24 horas.",
+      "categoria": "Tecnología en Turismo",
+      "puntuacion": 32,
+      "fecha": "2026-06-25",
+      "fuente_asunto": "Now at $4.8B in bookings. But it started as an accident.",
+      "url": "https://www.chaty.ai/",
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_012",
+      "tipo": "noticia",
+      "titulo": "SaffronStays capta $3,5M para gestión de villas y casas de campo en India",
+      "resumen": "La plataforma india SaffronStays cierra una ronda de $3,5M liderada por Infinity Ventures para escalar su modelo de gestión integral de propiedades de lujo rural —villas y patrimonio histórico— en India. La compañía se encarga de toda la operación por cuenta del propietario.",
+      "categoria": "Hoteles y Alojamiento",
+      "puntuacion": 38,
+      "fecha": "2026-06-25",
+      "fuente_asunto": "Now at $4.8B in bookings. But it started as an accident.",
+      "url": "https://www.saffronstays.com/",
+      "newsletter": "Future Travel"
+    },
+    {
+      "id": "tur_013",
+      "tipo": "noticia",
+      "titulo": "JetBlue apuesta por Fort Lauderdale para ser líder de mercado por primera vez",
+      "resumen": "Marty St. George, planificador de red de JetBlue, dirige la estrategia de convertir Fort Lauderdale en la primera ciudad foco donde la aerolínea sea claramente número uno. La filosofía de St. George es que el tercer puesto en un mercado no tiene valor económico real y que JetBlue nunca ha ocupado una posición dominante en ningún mercado importante.",
+      "categoria": "Aerolíneas y Aviación",
+      "puntuacion": 65,
+      "fecha": "2026-06-25",
+      "fuente_asunto": "Marty St. George Isn't Playing Around",
+      "url": "https://www.theairlineobserver.com/p/marty-st-george-isnt-playing-around",
+      "newsletter": "The Airline Observer"
+    }
+  ]
+};
 
 const CAT_BORDER = {
   'Aerolineas':      '#00b4d8',
