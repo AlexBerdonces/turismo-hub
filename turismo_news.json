@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "ultima_actualizacion": "2026-07-07",
-  "total_noticias": 20,
+  "ultima_actualizacion": "2026-07-11",
+  "total_noticias": 21,
   "noticias": [
     {
       "id": "tur_001",
@@ -242,6 +242,18 @@
       "fuente_asunto": "Nuitée: The Invisible Infrastructure Behind the Next Era of Travel",
       "url": "https://traveltechessentialist.substack.com/p/nuitee-the-invisible-infrastructure",
       "newsletter": "Travel Tech Essentialist"
+    },
+    {
+      "id": "tur_021",
+      "tipo": "noticia",
+      "titulo": "El error de diseño de cabina que WestJet revirtió",
+      "resumen": "WestJet redujo el espacio para las piernas en algunos asientos de clase turista hasta 28 pulgadas para competir con aerolíneas low-cost, generando quejas virales de pasajeros. Diez días después del lanzamiento, la aerolínea revirtió la decisión y eliminó una fila para igualar el espacio en todos los asientos estándar. Su CEO reconoció que subestimaron el impacto en vuelos largos hacia el Caribe.",
+      "categoria": "Aerolíneas y Aviación",
+      "puntuacion": 58,
+      "fecha": "2026-07-10",
+      "fuente_asunto": "WestJet's LOPA Mistake",
+      "url": "https://www.theairlineobserver.com/p/westjets-lopa-mistake",
+      "newsletter": "The Airline Observer"
     }
   ]
 }
