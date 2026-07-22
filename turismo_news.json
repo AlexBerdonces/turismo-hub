@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "ultima_actualizacion": "2026-07-17",
-  "total_noticias": 29,
+  "ultima_actualizacion": "2026-07-22",
+  "total_noticias": 30,
   "noticias": [
     {
       "id": "tur_001",
@@ -33,7 +33,7 @@
       "titulo": "Navan compra TMC brasileña Smartrips en su primera adquisición post-OPI",
       "resumen": "Navan, plataforma de viajes de empresa recién salida a bolsa, adquiere Smartrips, una agencia de viajes corporativa de Brasil. El país concentra el 40% del gasto en viajes de negocio de Latinoamérica. Los clientes de Navan que operan allí podrán gestionar todo desde la plataforma.",
       "categoria": "Negocios y M&A",
-      "puntuacion": 65,
+      "puntuacion": 63,
       "fecha": "2026-06-19",
       "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
       "url": "https://navan.com/",
@@ -45,7 +45,7 @@
       "titulo": "WD Trip recauda $14,7M para agentes de IA dirigidos a hoteles y aerolíneas",
       "resumen": "WD Trip, fundada por un ex-VP de Alibaba y ejecutivo de Fliggy, cierra una ronda Pre-A de $14,7M respaldada por Baidu y accionistas de DeepSeek. Desarrolla herramientas de agentes de IA para hoteles, proveedores y marcas de viajes, además de planificación de viajes para el consumidor.",
       "categoria": "Tecnología en Turismo",
-      "puntuacion": 73,
+      "puntuacion": 71,
       "fecha": "2026-06-19",
       "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
       "url": null,
@@ -57,7 +57,7 @@
       "titulo": "Besty AI cierra $3,75M para gestionar alquileres vacacionales de forma autónoma",
       "resumen": "Besty AI recauda $3,75M en seed round para su motor agéntico que automatiza mensajes, operaciones, precios y ventas adicionales en alquileres de corta estancia. La plataforma cubre desde huéspedes hasta ingresos sin intervención humana, apuntando a propiedades gestionadas casi 100% de forma autónoma.",
       "categoria": "Tecnología en Turismo",
-      "puntuacion": 65,
+      "puntuacion": 63,
       "fecha": "2026-06-19",
       "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
       "url": "https://www.getbesty.ai/",
@@ -69,7 +69,7 @@
       "titulo": "Journey levanta $15M para red de fidelización de hoteles independientes",
       "resumen": "Journey cierra una ronda de $15M liderada por FirstMark Capital y Headline para expandir su red de fidelización diseñada para hoteles independientes. Acaba de adquirir también la plataforma de experiencias Epicurate, ampliando su oferta más allá del alojamiento.",
       "categoria": "Hoteles y Alojamiento",
-      "puntuacion": 58,
+      "puntuacion": 56,
       "fecha": "2026-06-19",
       "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
       "url": "https://www.journey.com/",
@@ -81,7 +81,7 @@
       "titulo": "EXO Travel, DMC líder en Asia, se integra en el grupo JTB",
       "resumen": "EXO Travel, una de las principales agencias de viajes receptivas de Asia, ha sido adquirida por la división Asia Pacífico de JTB Corp. El equipo directivo y las operaciones se mantienen sin cambios. La integración refuerza la presencia de JTB en el mercado del turismo de entrada en Asia.",
       "categoria": "Negocios y M&A",
-      "puntuacion": 60,
+      "puntuacion": 58,
       "fecha": "2026-06-19",
       "fuente_asunto": "A budget airline just bought a tour operator (and an airline, and hotels) for $843M",
       "url": "https://www.exotravel.com/",
@@ -350,6 +350,18 @@
       "fuente_asunto": "#205: Recommended",
       "url": "https://traveltechessentialist.substack.com/p/travel-tech-essentialist-205-recommended",
       "newsletter": "Travel Tech Essentialist"
+    },
+    {
+      "id": "tur_030",
+      "tipo": "noticia",
+      "titulo": "Kirby advierte: precios altos aunque baje el combustible",
+      "resumen": "El CEO de United, Scott Kirby, sugirió en la earnings call del segundo trimestre que las aerolíneas deben mantener las tarifas altas incluso cuando bajen los precios del combustible. Citó el caso de Ted Christie, quien dejó la CEO de Spirit en abril de 2025 entre sus dos bancarrotas, como advertencia a directivos que no lean bien los puntos de inflexión del sector.",
+      "categoria": "Aerolíneas y Aviación",
+      "puntuacion": 55,
+      "fecha": "2026-07-22",
+      "fuente_asunto": "Scott Kirby Has Thoughts on CEOs Who Don't Raise Prices",
+      "url": "https://www.theairlineobserver.com/p/scott-kirby-has-thoughts-on-ceos",
+      "newsletter": "The Airline Observer"
     }
   ]
 }
